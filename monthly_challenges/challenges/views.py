@@ -1,6 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-# Create your views here.
-def index(request):
-    return HttpResponse("<h1>Hello world</h1>")
+def january(request):
+    return HttpResponse("<h1>Hello january</h1>")
+
+def february(request):
+    return HttpResponse("<h1>Hello february</h1>")
