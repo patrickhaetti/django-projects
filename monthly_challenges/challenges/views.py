@@ -1,19 +1,21 @@
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
 
+
+monthly_challenges = {
+    "january": "january stuff",
+    "febuary": "february stuff",
+    "march": "march stuff"
+}
+
+
 def monthly_challenge_by_number(request, month):
     return HttpResponse(month)
 
 
 def monthly_challenge(request, month):
-    challenge_text = None
-    if month == "january":
-        challenge_text = "Januar hallo"
-        
-    elif month == "february":
-        challenge_text = "feb hallo"
-        
-    else:
+    try:
+        challenge_text = monthly_challenges[month]
+        return HttpResponse(challenge_text)
+    except:
         return HttpResponseNotFound("Not supported")
-        
-    return HttpResponse(challenge_text)
