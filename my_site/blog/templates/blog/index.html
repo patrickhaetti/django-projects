@@ -1,7 +1,47 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}My Blog{% endblock %}
 
+{% block css_files %}
+<link rel="stylesheet" href="{% static "blog/index.css" %}">
+{% endblock  %}
 {% block content %}
-    <h1>Welcome to my blog</h1>
+<header id="main-navigation">
+    <h1><a href="">Pat's Blog</a></h1>
+    <nav>
+        <a href="">All Posts</a>
+    </nav>
+</header>
+
+    <section id="welcome">
+        <header>
+            <img src="" alt="Pat - The Author of this Blog">
+            <h2>Patrick's Blog</h2>
+        </header>
+        <p>Hi, this a blog</p>
+    </section>
+
+    <section id="latest-posts">
+        <h2>My latest thoughts</h2>
+
+        <ul>
+            <li>
+                <article class="post">
+                    <a href="">
+                        <img src="" alt="Mountain Hiking">
+                        <div class="post__content">
+                            <h3>Mountain Hiking</h3>
+                            <p>There's nothing like the views when you get when hiking in the mounains!</p>
+                        </div>
+                    </a>
+                </article>
+            </li>
+        </ul>
+    </section>
+
+    <section id="about">
+        <h2>What I do</h2>
+        <p>Programming Django stuff</p>
+    </section>
 {% endblock %}
