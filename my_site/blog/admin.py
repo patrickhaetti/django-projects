@@ -1,13 +1,13 @@
 from django.contrib import admin
 
-from .models import Post, Author, Tag
+from .models import Course, Instructor, Tag
 # Register your models here.
 
-class PostAdmin(admin.ModelAdmin):
-    list_filter = ("author", "tags", "date")
-    list_display = ("title", "date", "author")
+class CourseAdmin(admin.ModelAdmin):
+    list_filter = ("instructor", "tags", "date")
+    list_display = ("title", "date", "instructor")
     prepopulated_fields = {"slug": ("title",)} 
 
-admin.site.register(Post, PostAdmin)
-admin.site.register(Author)
+admin.site.register(Course, CourseAdmin)
+admin.site.register(Instructor)
 admin.site.register(Tag)

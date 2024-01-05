@@ -1,26 +1,26 @@
 from django.shortcuts import render, get_object_or_404
 
-from .models import Post
+from .models import Course
 
 # Create your views here.
 
 def starting_page(request):
-    latest_posts = Post.objects.all().order_by("-date")[:3]
-    # sorted_posts = sorted(all_posts, key=get_date)
-    # latest_posts = sorted_posts[-3:]
+    latest_courses = Course.objects.all().order_by("-date")[:3]
+    # sorted_course = sorted(all_course, key=get_date)
+    # latest_course = sorted_course[-3:]
     return render(request, "blog/index.html", {
-        "posts": latest_posts
+        "course": latest_courses
     })
 
-def posts(request):
-    all_posts = Post.objects.all().order_by("-date")
-    return render(request, "blog/all_posts.html", {
-        "all_posts": all_posts
+def courses(request):
+    all_courses = Course.objects.all().order_by("-date")
+    return render(request, "blog/all_courses.html", {
+        "all_courses": all_courses
     })
 
-def post_detail(request, slug):
-    identified_post = get_object_or_404(Post, slug=slug)
-    return render(request, "blog/post_detail.html", {
-        "post": identified_post,
-        "post_tags": identified_post.tags.all()
+def course_detail(request, slug):
+    identified_course = get_object_or_404(Course, slug=slug)
+    return render(request, "blog/course_detail.html", {
+        "course": identified_course,
+        "course_tags": identified_course.tags.all()
     })

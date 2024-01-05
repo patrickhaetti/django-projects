@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Alle Kurse{% endblock %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "blog/course.css" %}">
+<link rel="stylesheet" href="{% static "blog/all-courses.css" %}">
+{% endblock  %}
+{% block content %}
+<section id="all-courses">
+    <h2>Unsere Kurse​</h2>
+    <article class="xyz"> <p>
+        Wir bieten momentan ein breites Spektrum an Onlinekursen an. Nach den Corona Einschränkungen werden wir sowohl auf Präsenz- als auch auf Onlinekurse setzen.
+        Die Kursbeiträge sind bei uns 84€ pro Monat für Nichtmitglieder und  65€ monatlich für Vollmitglieder. Hier gehts zum Mitgliederantrag!
+        Für freie Plätze in den einzelnen regulären Kursen sprecht direkt mit den Referenten oder schreibt eine Mail an: info@infho.eu
+        Nehmt auch an unseren Ferienkursen teil!
+        </p>
+    </article>
+
+    <br><br>
+
+    <ul>
+        {% for course in all_courses %}
+            {% include "blog/includes/course.html" %}
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}

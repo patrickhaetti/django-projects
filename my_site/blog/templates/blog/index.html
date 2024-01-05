@@ -4,7 +4,7 @@
 {% block title %}My Blog{% endblock %}
 
 {% block css_files %}
-<link rel="stylesheet" href="{% static "blog/post.css" %}">
+<link rel="stylesheet" href="{% static "blog/course.css" %}">
 <link rel="stylesheet" href="{% static "blog/index.css" %}">
 {% endblock  %}
 {% block content %}
@@ -12,18 +12,18 @@
 
     <section id="welcome">
         <header>
-            <img src="{% static "blog/images/image_1.png" %}" alt="Pat - The Author of this Blog">
-            <h2>Patrick's Blog</h2>
+            <img src="{% static "blog/images/infho.png" %}" alt="Pat - The Author of this Blog">
+            <h2>Initiative für Hochbegabung e.V.</h2>
         </header>
         <p>Hi, this a blog</p>
     </section>
 
-    <section id="latest-posts">
-        <h2>My latest thoughts</h2>
+    <section id="latest-courses">
+        <h2>Aktuelles</h2>
 
         <ul>
-            {% for post in posts %}
-           {% include "blog/includes/post.html" %}
+            {% for course in courses %}
+           {% include "blog/includes/course.html" %}
            {% endfor %}
         </ul>
     </section>

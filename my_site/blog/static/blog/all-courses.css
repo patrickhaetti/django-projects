@@ -7,13 +7,13 @@ body {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   }
   
-  #all-posts {
+  #all-courses {
     margin: 7rem auto;
     width: 90%;
     max-width: 60rem;
   }
   
-  #all-posts h2 {
+  #all-courses h2 {
     text-align: center;
     font-size: 2rem;
     color: #2e2e2e;
@@ -29,13 +29,14 @@ body {
     gap: 1.5rem;
   }
   
-  .post img {
+  .course img {
     width: 7rem;
     height: 7rem;
   }
-  
-  .post a {
-    height: 22rem;
+  /* course field */
+  .course a {
+    height: 20rem;
+    width: 17rem;
     transform-origin: center;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     border-radius: 12px;
