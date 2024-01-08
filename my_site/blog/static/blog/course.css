@@ -1,3 +1,13 @@
+.container .column h3 {
+  color: #700cce; /* Change the text color */
+  font-size: 1.5rem; /* Adjust the font size */
+  font-weight: bold; /* Make the font bold */
+  margin-bottom: 1rem; /* Add some space below each heading */
+  padding-bottom: 0.5rem; /* Add some padding at the bottom */
+  text-transform: uppercase; /* Optional: Transform text to uppercase */
+}
+
+
 .course {
     display: flex;
     flex-direction: column;
