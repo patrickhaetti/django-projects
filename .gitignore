@@ -1,10 +1,7 @@
-monthly_challenges/challenges/__pycache__/views.cpython-310.pyc
-monthly_challenges/challenges/__pycache__/__init__.cpython-310.pyc
-monthly_challenges/challenges/__pycache__/urls.cpython-310.pyc
-monthly_challenges/monthly_challenges/__pycache__/urls.cpython-310.pyc
-monthly_challenges/challenges/__pycache__/admin.cpython-310.pyc
-monthly_challenges/challenges/migrations/__pycache__/__init__.cpython-310.pyc
-monthly_challenges/challenges/__pycache__/apps.cpython-310.pyc
-monthly_challenges/challenges/__pycache__/models.cpython-310.pyc
-.gitignore
-monthly_challenges/monthly_challenges/__pycache__/settings.cpython-310.pyc
+# Django #
+*.log
+*.pot
+*.pyc
+__pycache__
+db.sqlite3
+media
