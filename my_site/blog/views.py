@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 
-from .models import Course
+from .models import Course, VacationCourse
 
 # Create your views here.
 
@@ -21,6 +21,19 @@ def courses(request):
 def course_detail(request, slug):
     identified_course = get_object_or_404(Course, slug=slug)
     return render(request, "blog/course_detail.html", {
+        "course": identified_course,
+        "course_tags": identified_course.tags.all()
+    })
+
+def vacation_courses(request):
+    all_courses = VacationCourse.objects.all().order_by("-date")
+    return render(request, "blog/vacation_courses.html", {
+        "all_courses": all_courses
+    })
+
+def vacation_course_detail(request, slug):
+    identified_course = get_object_or_404(VacationCourse, slug=slug)
+    return render(request, "blog/vacation_course_detail.html", {
         "course": identified_course,
         "course_tags": identified_course.tags.all()
     })

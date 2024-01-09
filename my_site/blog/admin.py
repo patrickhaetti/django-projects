@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Course, Instructor, Tag
+from .models import Course, VacationCourse, Instructor, Tag, Location
 # Register your models here.
 
 class CourseAdmin(admin.ModelAdmin):
@@ -9,5 +9,7 @@ class CourseAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)} 
 
 admin.site.register(Course, CourseAdmin)
+admin.site.register(VacationCourse)
 admin.site.register(Instructor)
 admin.site.register(Tag)
+admin.site.register(Location)

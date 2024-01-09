@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Ferienkurse{% endblock %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "blog/course.css" %}">
+<link rel="stylesheet" href="{% static "blog/all-courses.css" %}">
+{% endblock  %}
+{% block content %}
+<section id="vacation-courses">
+    <h2>Ferienkurse</h2>
+    <article class="xyz"> <p>
+        Unsere Ferienkurse finden in Präsenz und Online statt. Unter dem Link zu den jeweiligen Ferien findet Ihr das Programm.
+        Ferienkurse kosten 55€ pro Tag für Vollmitglieder und 69€ für Nichtmitglieder. Hier kann man Mitglied werden!
+        Vollmitglieder die Inhaber des Berlin-Passes oder eines änhlichen Dokuments sind können die Kursbeiträge über unseren Fonds fördern lassen. Für mehr Infos schreibt uns eine Email an info@infho.eu
+        Die Kurse können immer ab 4 Teilnehmern stattfinden. Je nach Kurs können zwischen 6 und 8 Teilnehmer mitmachen. Sollte aber mehr Interesse bestehen, werden wir versuchen, durch Co-Referenten die Teilnahme von noch mehr Kids zu ermöglichen
+        Habt ihr Interesse Mitglied des InfHo Vereins zu werden? Dann meldet euch hier! Vereinsmitglieder zahlen für jeden Ferienkurs nur 55€
+        </p>
+    </article>
+
+    <br><br>
+
+    <ul>
+        {% for course in all_courses %}
+            {% include "blog/includes/vacation_course.html" %}
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}
