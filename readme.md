@@ -27,6 +27,13 @@ Link: https://www.udemy.com/share/104wQS3@avlwt7qFrhaC66kzgUeG8_xYZEdwIm-f4W17tv
 + feedback 
     * (Section 10 Forms)
     * (Section 11 Class Views, commit c6ad880)
++ feedback_rest
+    * make feedback project RESTful
+        * Endpoints: 
+
+            | result    | Endpoints   
+            |-------------|-------------
+            | all review Entries | /reviews/api/all |
 
 ### other projects based on the branches before
 + infho_revamped

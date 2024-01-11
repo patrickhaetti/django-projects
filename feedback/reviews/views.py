@@ -6,8 +6,9 @@ from django.views import View
 from django.views.generic.base import TemplateView
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView
+from rest_framework.generics import ListAPIView
 
-from .models import Review
+from .models import Review, ReviewSerializer
 from .forms import ReviewForm
 
 # Create your views here.
@@ -41,3 +42,9 @@ class ReviewListView(ListView):
 class SingleReviewView(DetailView):
     template_name = "reviews/single_review.html"
     model = Review
+
+# RESTful API view for Review list
+class ReviewListAPIView(ListAPIView):
+    # queryset = Review.objects.filter(rating__gt=2)  # adjusting querying logic
+    queryset = Review.objects.all()  
+    serializer_class = ReviewSerializer
