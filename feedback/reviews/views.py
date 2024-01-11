@@ -34,11 +34,3 @@ class ThankYou(TemplateView):
         context = super().get_context_data(**kwargs)
         context["message"] = "This works!"
         return context
-
-# replace method view with class based         
-# class ThankYou(View):
-#     def get(self, request):
-#         return render(request, "reviews/thank_you.html")
-        
-# def  thank_you(request):
-#     return render(request, "reviews/thank_you.html")
