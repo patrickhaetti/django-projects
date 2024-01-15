@@ -16,24 +16,6 @@ From Udemy "Python Django - The Practical Guide"
 
 Link: https://www.udemy.com/share/104wQS3@avlwt7qFrhaC66kzgUeG8_xYZEdwIm-f4W17tvhHgsycgatMe-FWJoUOtr92TJUqPA==/
 
-# Instructions:
-- Install python libraries in virtual environment with requirements.txt
-- Go to folder with manage.py file
-- run the following
-```bash
-python manage.py makemigrations
-```
-then
-
-```bash
-python manage.py migrate
-```
-
-## Projects
-From Udemy "Python Django - The Practical Guide"
-
-Link: https://www.udemy.com/share/104wQS3@avlwt7qFrhaC66kzgUeG8_xYZEdwIm-f4W17tvhHgsycgatMe-FWJoUOtr92TJUqPA==/
-
 + challenges
 + monthly_challenges
 + my_site 
@@ -45,6 +27,10 @@ Link: https://www.udemy.com/share/104wQS3@avlwt7qFrhaC66kzgUeG8_xYZEdwIm-f4W17tv
 + feedback 
     * (Section 10 Forms)
     * (Section 11 Class Views, commit c6ad880)
++ feedback_profiles (Section 12 File Uploads)
+
+### other projects based on the branches before
++ infho_revamped
 + feedback_rest
     * make feedback project RESTful
         * Endpoints: 
@@ -52,6 +38,3 @@ Link: https://www.udemy.com/share/104wQS3@avlwt7qFrhaC66kzgUeG8_xYZEdwIm-f4W17tv
             | result    | Endpoints   
             |-------------|-------------
             | all review Entries | /reviews/api/all |
-
-### other projects based on the branches before
-+ infho_revamped
