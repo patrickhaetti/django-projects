@@ -10,6 +10,7 @@ Review Detail
 <p>Rating: {{ review.rating }}</p>
 <p>{{ review.review_text }}</p>
 <form action="/reviews/favorite" methods="POST">
+    {% csrf_token %}
     <input type="hidden" name="review_id" value="{{ review.id }}">
     <button>Favorite</button>
 </form>
