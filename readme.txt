@@ -21,7 +21,7 @@ Link: https://www.udemy.com/share/104wQS3@avlwt7qFrhaC66kzgUeG8_xYZEdwIm-f4W17tv
 + my_site 
     * (Section 5 Building a blog)
     * (Section 9 Updating blog with data & models)
-    * (Section 14 Building a Blog: Forms, Files & Sessions)
++ my_site_blog (Section 14 Building a Blog: Forms, Files & Sessions) / based on my_site f80ce63
 + book_store (Section 6)
 + book_store_admin (Section 7)
 + book_store_relationships (Section 8)
