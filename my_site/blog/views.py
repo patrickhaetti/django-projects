@@ -1,26 +1,44 @@
 from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView, DetailView
 
 from .models import Post
 
 # Create your views here.
 
-def starting_page(request):
-    latest_posts = Post.objects.all().order_by("-date")[:3]
-    # sorted_posts = sorted(all_posts, key=get_date)
-    # latest_posts = sorted_posts[-3:]
-    return render(request, "blog/index.html", {
-        "posts": latest_posts
-    })
 
-def posts(request):
-    all_posts = Post.objects.all().order_by("-date")
-    return render(request, "blog/all_posts.html", {
-        "all_posts": all_posts
-    })
+class StartingPageView(ListView):
+    template_name = "blog/index.html"
+    model = Post
+    context_object_name = "posts"  # name of info which will be passed to html
+    ordering = ["-date", "author"]  # add all order commands here
 
-def post_detail(request, slug):
-    identified_post = get_object_or_404(Post, slug=slug)
-    return render(request, "blog/post_detail.html", {
-        "post": identified_post,
-        "post_tags": identified_post.tags.all()
-    })
+    # adjusting querying logic
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        data = queryset[:3]
+        return data
+
+
+class PostListView(ListView):
+    template_name = "blog/all_posts.html"
+    model = Post
+    ordering = ["-date"]  # add all order commands here
+    context_object_name = "all_posts"
+
+    # adjusting querying logic
+    def get_queryset(self):
+        base_query = super().get_queryset()
+        data = base_query.all()
+        return data
+
+
+class SinglePostView(DetailView):
+    template_name = "blog/post_detail.html"
+    model = Post
+    context_object_name = 'post'
+    slug_url_kwarg = 'slug'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['post_tags'] = self.object.tags.all()
+        return context
