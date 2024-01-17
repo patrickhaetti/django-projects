@@ -30,10 +30,17 @@
     <p>{{ post.content|linebreaks }}</p>
 </main>
 
-<div>
-    <form action="">
-        {{ comment_form }}
-        <button>Comment</button>
+<section id="comment-form">
+    <h2>Your comment</h2>
+    <form>
+        {% for form_field in comment_form %}
+        <div class="form-control">
+            {{ form_field.label_tag }}
+            {{ form_field }}
+            {{ form_field.errors }}
+        </div>
+        {% endfor %}
+        <button>Save Comment</button>
     </form>
-</div>
+</section>
 {% endblock %}
