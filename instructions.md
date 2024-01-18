@@ -8,4 +8,6 @@
 - my_site_blog (chapter 196)
 
 # Read Later Setup
-- my_site_blog (chapter 197, add sessions in 198)
+- my_site_blog 
+    * chapter 197, 4ba9686 
+    * add sessions in chapter 198
