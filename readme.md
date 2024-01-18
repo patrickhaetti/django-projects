@@ -31,6 +31,8 @@ Link: https://www.udemy.com/share/104wQS3@avlwt7qFrhaC66kzgUeG8_xYZEdwIm-f4W17tv
 + feedback_profiles (Section 12 File Uploads)
 + feedback_sessions (Section 13 Sessions)
 
++ my_site_blog_deployable (Section 15, Deployment. Based on my_site_blog)
+
 ### other projects based on the branches before
 + infho_revamped
 + feedback_rest
