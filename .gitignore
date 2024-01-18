@@ -7,3 +7,4 @@ db.sqlite3
 media
 my_site/uploads/images/*
 my_site/uploads/posts/*
+my_site/staticfiles/
