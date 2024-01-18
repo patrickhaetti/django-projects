@@ -7,7 +7,7 @@
 # Add Admin
 - my_site_blog (chapter 196)
 
-# Read Later Setup
-- my_site_blog 
+# Read Later Setup (Using Sessions)
+- my_site_blog (197 - 199)
     * chapter 197, 4ba9686 
     * add sessions in chapter 198
