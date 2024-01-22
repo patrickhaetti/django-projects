@@ -6,3 +6,4 @@ __pycache__
 db.sqlite3
 media
 feedback/uploads/images/*
+my_site/staticfiles/*
