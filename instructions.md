@@ -15,3 +15,10 @@
 
 # Deployment
 - my_site_blog_deployable (chapter 208)
+
+
+# Checklist for Deployment
++ set DEBUG to False in production / replace with env var
++ static files
++ Add host to 'ALLOWED_HOSTS' in settings (use env variable)
++ replace SECRET_KEY with env variable 
