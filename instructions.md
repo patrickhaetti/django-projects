@@ -16,9 +16,51 @@
 # Deployment
 - my_site_blog_deployable (chapter 208)
 
-
-# Checklist for Deployment
+# Deployment
+## Checklist 
 + set DEBUG to False in production / replace with env var
 + static files
 + Add host to 'ALLOWED_HOSTS' in settings (use env variable)
+    * getenv("APP_HOST") didn't work
+    * environ.get('APP_HOST') works
 + replace SECRET_KEY with env variable 
+
+## Deploy on AWS - Elasticbeanstalk (with zip file)
+1. create Service "elasticbeanstalk"
+2. create .ebextensions folder with django.config file:
+    ```
+    option_settings:
+      aws:elasticbeanstalk:container:python:
+        WSGIPath: my_site.wsgi:application
+    ```
+3. create zip file:
+    * requirements.txt
+    * manage.py
+    * db.sqlite3
+    * .ebextensions
+    * project folder
+    * app folders
+    * staticfiles
+    * templates
+    * uploads
+
+### In AWS/elasticbeanstalk 
+4.
+    + click through until environment variables and add 
+
+        | Var name      | value     | Comment
+        |-------------  |-----------| -----------
+        | IS_PRODUCTION | True      | DEBUG, dont use
+        | DEBUG         | FALSE     | DEBUG 
+        | APP_HOST      | abc       | when deploying first use dummy value|
+
+    + create / adjust IAM role
+
+    + create / adjust IAM instance for EC2
+
+5. Submit
+
+6. In "Environment overview" / "Domain" open link. If this is first time deployment, take the url and add to APP_HOST environment variable in "configuration"
+    
+### Potential issues
++ Changes in AWS are not applying (eg modified env variables) -> Go to Actions/restart server
