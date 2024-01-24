@@ -13,10 +13,10 @@
     * add sessions in chapter 198
     * remove "Read Later" functionality
 
-# Deployment
-- my_site_blog_deployable (chapter 208)
 
 # Deployment
+- see branch also "my_site_blog_deployable" (chapter 208)
+
 ## Checklist 
 + set DEBUG to False in production / replace with env var
 + static files
@@ -64,3 +64,9 @@
     
 ### Potential issues
 + Changes in AWS are not applying (eg modified env variables) -> Go to Actions/restart server
+
+    
+### Further
++ Custom domain with "AWS Route 53"
+https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/customdomains.html
++ Configuring HTTPS for your Elastic Beanstalk environment https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/configuring-https.html
