@@ -88,6 +88,15 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+    # setup for elephantsql
+    # 'default': {
+    #     'ENGINE': '',
+    #     'NAME': '',
+    #     'USER': '',
+    #     'PASSWORD': '',
+    #     'HOST': '',
+    #     'PORT': '',
+    # }
 
 
 # Password validation

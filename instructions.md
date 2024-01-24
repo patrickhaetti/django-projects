@@ -15,7 +15,7 @@
 
 
 # Deployment
-- see branch also "my_site_blog_deployable" (chapter 208)
+- see branch also "my_site_blog_deployable" (chapter 208-215 / 4a98c56)
 
 ## Checklist 
 + set DEBUG to False in production / replace with env var
@@ -70,3 +70,14 @@
 + Custom domain with "AWS Route 53"
 https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/customdomains.html
 + Configuring HTTPS for your Elastic Beanstalk environment https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/configuring-https.html
+
+
+# Connect to PostgreSQL ()
+1. 
+    + pip install psycopg
+    + https://docs.djangoproject.com/en/5.0/ref/databases/
+    + https://pypi.org/project/psycopg/
+
+### Further
++ AWS RDS Postgres Free Tier only for 1st year
++ elephantsql.com has for free tier (Turtle plan) only postgres v.10 which is too low
