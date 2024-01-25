@@ -21,16 +21,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-5d8lpe!6@^y&p%f2b!b7hk2uhx2f7@qqqnfxgcs!#+reao*xuh'
+SECRET_KEY = environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = getenv("IS_DEVELOPMENT", True)
-# DEBUG = environ.get('DEBUG')
-DEBUG = False
-
+DEBUG = environ.get('DEBUG')
 ALLOWED_HOSTS = [
     # getenv("APP_HOST")
-    environ.get('APP_HOST')
+    environ.get('APP_HOST'),
+    'localhost'
 ]
 
 
@@ -83,21 +82,22 @@ WSGI_APPLICATION = 'my_site.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-    # setup for elephantsql
     # 'default': {
-    #     'ENGINE': '',
-    #     'NAME': '',
-    #     'USER': '',
-    #     'PASSWORD': '',
-    #     'HOST': '',
-    #     'PORT': '',
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
 
+   # setup for neon.tech db
+  'default': {
+    'ENGINE': environ.get('ENGINE'),
+    'NAME': environ.get('NAME'),
+    'USER': environ.get('USER'),
+    'PASSWORD': environ.get('PASSWORD'),
+    'HOST': environ.get('HOST'),
+    'PORT': environ.get('PORT'),
+    'OPTIONS': {'sslmode': 'require'},
+  }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

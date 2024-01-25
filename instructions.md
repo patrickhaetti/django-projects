@@ -78,6 +78,9 @@ https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/customdomains.html
     + https://docs.djangoproject.com/en/5.0/ref/databases/
     + https://pypi.org/project/psycopg/
 
+2. neon.tech offers free postgres tier. DATABASES info for settings.py will be offered to copy/paste from dashboard.
+    https://neon.tech/docs/guides/django
+
 ### Further
 + AWS RDS Postgres Free Tier only for 1st year
 + elephantsql.com has for free tier (Turtle plan) only postgres v.10 which is too low
