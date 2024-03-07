@@ -62,9 +62,9 @@
 
 6. In "Environment overview" / "Domain" open link. If this is first time deployment, take the url and add to APP_HOST environment variable in "configuration"
     
-### Potential issues
+### Potential issues AWS/elasticbeanstalk
 + Changes in AWS are not applying (eg modified env variables) -> Go to Actions/restart server
-
++ uploaded requirements file didn't accept psycopg2 along with psycopg
     
 ### Further
 + Custom domain with "AWS Route 53"
@@ -80,6 +80,9 @@ https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/customdomains.html
 
 2. neon.tech offers free postgres tier. DATABASES info for settings.py will be offered to copy/paste from dashboard.
     https://neon.tech/docs/guides/django
+
+3. Set environemnts variables in host environment
+
 
 ### Further
 + AWS RDS Postgres Free Tier only for 1st year
