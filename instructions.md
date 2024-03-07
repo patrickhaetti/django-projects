@@ -64,8 +64,10 @@
     
 ### Potential issues AWS/elasticbeanstalk
 + Changes in AWS are not applying (eg modified env variables) -> Go to Actions/restart server
-+ uploaded requirements file didn't accept psycopg2 along with psycopg
-    
++ uploaded requirements file didn't accept psycopg2 along with psycopg2 -> use psycopg2-binary library
+
+
+
 ### Further
 + Custom domain with "AWS Route 53"
 https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/customdomains.html
@@ -87,3 +89,21 @@ https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/customdomains.html
 ### Further
 + AWS RDS Postgres Free Tier only for 1st year
 + elephantsql.com has for free tier (Turtle plan) only postgres v.10 which is too low
+
+
+# Serving Static Files
+
+1. add .ebextensions/static-files.config
+where /static points to STATIC_ROOT = BASE_DIR / "staticfiles" as in settings.py
+and /files point to MEDIA_ROOT = BASE_DIR / "uploads"
+
+```yaml
+option_settings:
+  aws:elasticbeanstalk:environment:proxy:staticfiles:
+    /static: staticfiles
+    /files: uploads
+```
+this instructs the server to handle requests targeting /static and /files with the files stored in staticfiles respectively uploads
+
+2. remove static from urlpatterns
+2. Change webserver configuration in settings.py
