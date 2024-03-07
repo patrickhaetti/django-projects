@@ -91,7 +91,7 @@ https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/customdomains.html
 + elephantsql.com has for free tier (Turtle plan) only postgres v.10 which is too low
 
 
-# Serving Static Files
+# Serving Static Files (via elasticbeanstalk)
 
 1. add .ebextensions/static-files.config
 where /static points to STATIC_ROOT = BASE_DIR / "staticfiles" as in settings.py
@@ -107,3 +107,135 @@ this instructs the server to handle requests targeting /static and /files with t
 
 2. remove static from urlpatterns
 2. Change webserver configuration in settings.py
+
+
+
+# Serving Static Files (via S3)
+ 
+ 1.  open S3 console
+    - add new bucket (used Europe (Frankfurt) eu-central-1)
+    - uncheck "Block all public access" (makes it publicly accessible)  & acknowledge danger warning
+
+2. 
+ go into bucket / properties
+ go to Static website hosting: Enable
+ choose "Host a static website"
+ add index.html but it doesnt matter, aws just asks for a name
+
+ 3. 
+ go into bucket / permissions
+ go to "Cross-origin resource sharing (CORS)"
+ add
+ ```json
+[
+    {
+        "AllowedHeaders": [
+            "*"
+            ],
+        "AllowedMethods": [
+            "GET", "POST"
+            ],
+        "AllowedOrigins": [
+            "*"
+            ],
+        "ExposeHeaders": []
+    }
+]
+```
+this means resources can be fetched from other domains, ie beanstalk has another address than bucket
+
+4. Ensure that requests can reach this bucket:
+go into bucket / permissions
+Bucket policy
+
+
+ add
+ ```json
+{
+  "Version": "2012-10-17",
+  "Statement": [{
+      "Sid": "PublicReadGetObject",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": ["s3:GetObject"],
+      "Resource": "arn:aws:s3:::bucket-name/*"
+    }
+  ]
+}
+```
+
+make sure bucket-name is the name from the created bucket
+
+
+5. Grant access to bucket for django with IAM service
+* go to IAM Dashboard / User Groups
+* create User Group
+* add policy "AmazonS3FullAccess"
+* Add users -> create new user &  & add to user group created in step before
+
+
+for creating access key and  secret access key, choose
+"local code"
+
+save keys
+
+
+6. go to project
+
+```bash
+pip install django-storages boto3
+```
+
+7. update requirements
+
+
+8. 
+go to settings.py
+
+add 
+
+INSTALLED_APPS = [
+    ....
+    'storages',
+
+
+
+9. overwrite default storage mechanism:
+
+add AWS settings which will be picked up by boto3
+
+go to settings.py
+
+add 
+
+
+AWS_STORAGE_BUCKET_NAME = ""
+AWS_S3_REGION_NAME= ""
+AWS_ACCESS_KEY_ID= ""
+AWS_SECRET_ACCESS_KEY_ID = ""
+
+AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+
+STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+
+
+
+10. collectstatic
+
+```bash
+python3 manage.py collectstatic
+```
+This will overwrite existing files!
+Are you sure you want to do this?
+
+Type 'yes' to continue, or 'no' to cancel: 
+
+-> "yes"
+
+
+11. Check if all is working locally
+
+start dev server without local static files
+```bash
+python3 manage.py runserver --nostatic
+```
