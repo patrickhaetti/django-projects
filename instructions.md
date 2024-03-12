@@ -16,6 +16,7 @@
 
 # Deployment
 - see branch also "my_site_blog_deployable" (chapter 208-215 / 4a98c56)
+- see also "Serving Static Files (via S3)"  18. for updated required files 
 
 ## Checklist 
 + set DEBUG to False in production / replace with env var
@@ -112,6 +113,8 @@ this instructs the server to handle requests targeting /static and /files with t
 
 # Serving Static Files (via S3)
  
+## Set Up AWS + Backend
+
  1.  open S3 console
     - add new bucket (used Europe (Frankfurt) eu-central-1)
     - uncheck "Block all public access" (makes it publicly accessible)  & acknowledge danger warning
@@ -239,3 +242,54 @@ start dev server without local static files
 ```bash
 python3 manage.py runserver --nostatic
 ```
+
+
+## Moving File Uploads to S3
+
+12. create custom_storages.py file in root directory
+```python
+from django.conf import settings
+from storages.backends.s3boto3 import S3Boto3Storage
+
+class StaticFileStorage(S3Boto3Storage):
+    location = settings.STATICFILES_FOLDER
+
+class MediaFilesStorage(S3Boto3Storage):
+    location = settings.MEDIAFILES_FOLDER
+```
+
+13.  add 'static'/'media' folder names in settings to be created in S3
+
+- folder name of choice, not related to 'static'/'media' dirs from above. 
+- Folder with this name will then be created in S3 bucket
+STATICFILES_FOLDER = "static" 
+MEDIAFILES_FOLDER = "media"
+
+14. Update STATICFILES_STORAGE / DEFAULT_FILE_STORAGE
+with names from classes in custom_storages.py,
+ie. 
+* storages.backends.s3boto3.S3Boto3Storage -> custom_storages.StaticFileStorage
+* storages.backends.s3boto3.S3Boto3Storage -> custom_storages.MediaFilesStorage
+
+15. If there are old files in Bucket, delete them now
+
+16. collect static files and upload them 
+```bash
+python3 manage.py collectstatic
+```
+
+17. Run locally for testing without the built in static file serving capabilities
+
+```bash
+python3 manage.py runserver --nostatic
+```
+
+18. required files for deployment:
+    * requirements.txt
+    * manage.py
+    * db.sqlite3 (can be left out when using cloud DB)
+    * .ebextensions
+    * project folder
+    * app folders
+    * templates
+    * custom_storages.py

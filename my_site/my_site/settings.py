@@ -29,7 +29,8 @@ DEBUG = environ.get('DEBUG')
 ALLOWED_HOSTS = [
     # getenv("APP_HOST")
     environ.get('APP_HOST'),
-    'localhost'
+    'localhost',
+    '127.0.0.1' 
 ]
 
 
@@ -157,6 +158,11 @@ AWS_ACCESS_KEY_ID= environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = environ.get('AWS_SECRET_ACCESS_KEY')
 
 AWS_S3_CUSTOM_DOMAIN = environ.get('AWS_S3_CUSTOM_DOMAIN')
+
+# folder name of choice, not related to 'static'/'media' dirs from above. 
+# Folder with this name will then be created in S3 bucket
+STATICFILES_FOLDER = "static" 
+MEDIAFILES_FOLDER = "media"
 
 STATICFILES_STORAGE = environ.get('STATICFILES_STORAGE')
 DEFAULT_FILE_STORAGE = environ.get('DEFAULT_FILE_STORAGE') # used for media files
